@@ -4,7 +4,7 @@
 ```
 docker-compose build
 ```
-- khởi động các containers:
+- khởi động các containers (thêm flag -d nếu chạy ở chế độ nền):
 ```
 docker-compose up
 ```
