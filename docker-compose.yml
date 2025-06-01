@@ -1,0 +1,33 @@
+services:
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: recruitment-node
+    ports:
+      - "3005:3000"
+    volumes:
+      - ./app:/app
+      - /app/node_modules
+    depends_on:
+      - database
+    networks:
+      - recruitment
+
+  database:
+    image: mysql:8
+    container_name: recruitment-db
+    environment:
+      MYSQL_DATABASE: recruitment-test
+      MYSQL_ROOT_PASSWORD: password
+    # ports:
+    #   - "3307:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - recruitment
+
+volumes:
+  db-data:
+networks:
+  recruitment:
